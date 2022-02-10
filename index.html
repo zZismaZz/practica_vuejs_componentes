@@ -8,6 +8,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- TODO: Cargar CSS Bootstrap (no es necesario el JS) -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
 
     <body>
@@ -22,7 +23,20 @@
                - Para cada item: (https://vuejs.org/v2/guide/index.html#Conditionals-and-Loops)
                  - Crear un componente item-data
             -->
-
+            <div class="jumbotron">
+                <h1 id="title">{{ col.collection.title }}</h1>
+            </div>
+            <div class="container">
+                <div class="card-group">
+                    <div class="card" v-for="item in col.collection.items">
+                      <div class="card-body" v-for="movie in item.data">
+                        <h5 class="card-title">{{ movie.prompt }}</h5>
+                        <p class="card-text">{{ movie.value }}</p>
+                      </div>
+                      <div class="card-body"><a v-bind:href="item.href" class="btn btn-primary">Ver</a> <a v-bind:href="item.href" class="btn btn-secondary">Editar</a></div>             
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -49,6 +63,8 @@
 
 
         <!-- TODO: Cargar librería VueJS y archivo js/script.js -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="/js/script.js"></script>
 
     </body>
 
