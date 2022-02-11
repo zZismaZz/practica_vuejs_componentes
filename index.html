@@ -43,7 +43,38 @@
 
 
 
-       
+        <!-- Plantilla para el componente edit-form -->
+        <script type="text/x-template" id="editForm">
+
+            <!--
+                 TODO: Componente edit-form
+            -->
+            <div class="card shadow">
+                    <div class="card-body">
+                        <dl v-for="object in film.data">
+                            <dt> {{ object.prompt }} </dt>
+                            <input type="text" 
+                                v-if="object.prompt != 'Description'"
+                                v-bind:id="object.name+index"
+                                v-model="object.value"
+                            />
+                            <textarea type="text"
+                                v-else
+                                v-bind:id="object.name+index"
+                                v-model="object.value"
+                            />
+                        </dl>
+                    </div>
+                    <div class="card-footer">
+                        <input type="button" v-on:click="closeForm(index)" value="Cerrar" class="btn btn-primary w-50"/>
+                    </div>
+                </div>
+
+        </script>
+
+
+
+        
 
 
         <!-- TODO: Cargar librería VueJS y archivo js/script.js -->
