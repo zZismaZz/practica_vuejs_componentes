@@ -39,4 +39,36 @@ var server_data = {
 };
 
 
+var editFilm = [];
 
+// TODO: Componente edit-form
+Vue.component('edit-form', {
+    template: '#editForm', 
+    props: ['film', 'index'],
+    methods: {
+        closeForm: function(index) {
+            editFilm.splice(editFilm.indexOf(index), 1);
+        }
+    }
+})
+
+// TODO: Componente item-data
+Vue.component('item-data', {
+    template: '#itemData',
+    props: ['film', 'index'],
+    methods: {
+        toggleEditFormVisibility: function(index) {
+            editFilm.push(index);
+        }
+    }
+})
+
+// Aplicación VueJS
+// La aplicación recibe los datos en la variable de datos "col"
+var app = new Vue({
+    el: '#app',
+    data: {
+        col: server_data,
+        editFilm: editFilm
+    }
+});
