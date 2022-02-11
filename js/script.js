@@ -39,22 +39,4 @@ var server_data = {
 };
 
 
-// TODO: Componente edit-form
-Vue.component('edit-form', {
-
-})
-
-// TODO: Componente item-data
-Vue.component('item-data', {
-
-})
-
-// Aplicación VueJS
-// La aplicación recibe los datos en la variable de datos "col"
-var app = new Vue({
-    el: '#app',
-    data: {
-        col: server_data
-    }
-});
 

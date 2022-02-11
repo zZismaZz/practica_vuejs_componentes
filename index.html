@@ -13,7 +13,7 @@
 
     <body>
 
-        <h1 id="autor">Autor: TU NOMBRE AQUÍ</h1>
+        <h1 id="autor">Autor: ISMAEL FELIÚ DOMINGO</h1>
 
         <!-- https://vuejs.org/v2/guide/index.html -->
         <div id="app">
@@ -23,20 +23,22 @@
                - Para cada item: (https://vuejs.org/v2/guide/index.html#Conditionals-and-Loops)
                  - Crear un componente item-data
             -->
-            <div class="jumbotron">
-                <h1 id="title">{{ col.collection.title }}</h1>
-            </div>
-            <div class="container">
-                <div class="card-group">
-                    <div class="card" v-for="item in col.collection.items">
-                      <div class="card-body" v-for="movie in item.data">
-                        <h5 class="card-title">{{ movie.prompt }}</h5>
-                        <p class="card-text">{{ movie.value }}</p>
-                      </div>
-                      <div class="card-body"><a v-bind:href="item.href" class="btn btn-primary">Ver</a> <a v-bind:href="item.href" class="btn btn-secondary">Editar</a></div>             
+                    <div class="jumbotron">
+                        <h1 id="title">{{ col.collection.title }}</h1>
                     </div>
-                </div>
-            </div>
+                    <div class="container">
+                            <div class="card-group">
+                                <item-data class="card shadow text-center" 
+                                        v-for="item in col.collection.items" 
+                                        v-if="!editFilm.includes(col.collection.items.indexOf(item))" 
+                                        :film="item"
+                                        :index="col.collection.items.indexOf(item)"
+                                        :key="col.collection.items.indexOf(item)">
+                                </item-data>
+                            <edit-form v-else :film="item" :index="col.collection.items.indexOf(item)"></edit-form>                              
+                        </div>
+                    </div>
+
         </div>
 
 
